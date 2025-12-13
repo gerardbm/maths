@@ -1,2 +1,3 @@
-# lambdahub
-A collection of scripts for math
+# Maths
+
+A collection of scripts for mathematics

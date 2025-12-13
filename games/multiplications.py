@@ -8,7 +8,7 @@
 # Author  : Gerard Bajona
 # Created : 2025/06/01
 # Changed : 2025/06/08
-# URL     : http://github.com/gerardbm/lambdahub
+# URL     : http://github.com/gerardbm/maths
 # --------------------------------------------------
 """Multiplications game for the command line."""
 
