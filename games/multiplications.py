@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 # --------------------------------------------------
 # Name    : Multiplications game
-# Version : 3.0.0
+# Version : 2.1.0
 # Python  : 3.13.5
 # License : MIT
 # Author  : Gerard Bajona
-# Created : 2025/06/01
+# Created : 2019/02/08
 # Changed : 2025/06/08
 # URL     : http://github.com/gerardbm/maths
 # --------------------------------------------------
