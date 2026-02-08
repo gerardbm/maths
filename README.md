@@ -1,3 +1,3 @@
 # Maths
 
-A collection of scripts for mathematics
+Math scripts collection
