@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # --------------------------------------------------
 # Name    : Fractions game
-# Version : 2.0.0
+# Version : 2.1.0
 # Python  : 3.13.5
 # License : MIT
 # Author  : Gerard Bajona
@@ -14,7 +14,6 @@
 
 import argparse
 import random
-import operator
 import datetime
 import time
 from pathlib import Path
@@ -33,6 +32,10 @@ def parse_arguments():
             default=1,
             metavar='Int',
             help="Digits for the denominator (1 ≤ B ≤ 4; default = 1)")
+    parser.add_argument("-o",
+            type=str,
+            default='+-*/',
+            help="Arithmetic operations: '+-*/' (default: all)")
     parser.add_argument('-r',
             type=int,
             default=10,
@@ -56,7 +59,7 @@ def positive_digit(digit):
         raise argparse.ArgumentTypeError("Digits must be between 1 and 4.")
     return int_digit
 
-def letsplay(digits_a, digits_b, rounds, save):
+def letsplay(digits_a, digits_b, opers, rounds, save):
     """Start the game and show the score at the end."""
     score = 0
     count = 0
@@ -67,7 +70,7 @@ def letsplay(digits_a, digits_b, rounds, save):
     start = time.time()
     while count < rounds:
         count += 1
-        score = operation(score, count, digits_a, digits_b)
+        score = operation(score, count, digits_a, digits_b, opers)
     end = time.time()
 
     rights = score
@@ -97,20 +100,38 @@ def generate_operand(digits):
     max_val = (10 ** digits) - 1
     return random.randint(min_val, max_val)
 
-def operation(score, count, digits_a, digits_b):
+def operation(score, count, digits_a, digits_b, opers):
     """Do a question and check the answer."""
     num1 = generate_operand(digits_a)
     num2 = generate_operand(digits_a)
     den1 = generate_operand(digits_b)
     den2 = generate_operand(digits_b)
 
-    ops = {'+':operator.add,
-           '-':operator.sub,
-           '×':operator.mul,
-           '÷':operator.truediv}
-    ope = random.choice(list(ops.keys()))
+    frac1 = num1 / den1
+    frac2 = num2 / den2
+
+    print(opers)
+
+    ope = random.choice(tuple(opers))
+
+    if ope == '+':
+        result = frac1 + frac2
+        sym = '+'
+    elif ope == '-':
+        result = frac1 - frac2
+        sym = '-'
+    elif ope == '*':
+        result = frac1 * frac2
+        sym = '×'
+    elif ope == '/':
+        result = frac1 / frac2
+        sym = '÷'
+    else:
+        raise ValueError(f"Invalid operator: {ope}")
+
+    result = round(result, 2)
     ctr = str(count).zfill(2)
-    result = round(ops[ope](num1 / den1, num2 / den2), 2)
+
     print()
 
     # Format the output
@@ -137,14 +158,14 @@ def operation(score, count, digits_a, digits_b):
     # print(round(c2/1))
 
     print(" " * c0 + cnum1 + str(num1) + " " * c3 + cnum2 + str(num2))
-    print(f"{ctr}. Solve this: {cl} {ope} {cl} = x")
+    print(f"{ctr}. Solve this: {cl} {sym} {cl} = x")
     print(" " * c0 + cden1 + str(den1) + " " * c3 + cden2 + str(den2))
 
     while True:
         print()
         answer = input("What is the solution? ")
         try:
-            num3,den3 = map(float, answer.split('/'))
+            num3, den3 = map(int, answer.split('/'))
             break
         except ValueError:
             print('\033[33m--- It must be a fraction: a/b.\033[0m')
@@ -220,7 +241,7 @@ def main():
             print("No scores file found to delete.")
         return
 
-    letsplay(args.a, args.b, args.r, args.s)
+    letsplay(args.a, args.b, args.o, args.r, args.s)
 
 if __name__ == '__main__':
     main()
