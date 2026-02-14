@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # --------------------------------------------------
 # Name    : Fractions game
-# Version : 2.1.0
+# Version : 2.2.0
 # Python  : 3.13.5
 # License : MIT
 # Author  : Gerard Bajona
@@ -16,6 +16,7 @@ import argparse
 import random
 import datetime
 import time
+from fractions import Fraction
 from pathlib import Path
 
 def parse_arguments():
@@ -107,10 +108,8 @@ def operation(score, count, digits_a, digits_b, opers):
     den1 = generate_operand(digits_b)
     den2 = generate_operand(digits_b)
 
-    frac1 = num1 / den1
-    frac2 = num2 / den2
-
-    print(opers)
+    frac1 = Fraction(num1, den1)
+    frac2 = Fraction(num2, den2)
 
     ope = random.choice(tuple(opers))
 
@@ -129,7 +128,6 @@ def operation(score, count, digits_a, digits_b, opers):
     else:
         raise ValueError(f"Invalid operator: {ope}")
 
-    result = round(result, 2)
     ctr = str(count).zfill(2)
 
     print()
@@ -166,15 +164,18 @@ def operation(score, count, digits_a, digits_b, opers):
         answer = input("What is the solution? ")
         try:
             num3, den3 = map(int, answer.split('/'))
+            user_fraction = Fraction(num3, den3)
             break
-        except ValueError:
+        except (ValueError, ZeroDivisionError):
             print('\033[33m--- It must be a fraction: a/b.\033[0m')
 
-    if result == round(num3/den3, 2):
-        print('\033[32m' + "--- Good!" + '\033[0m')
+    if user_fraction == result:
+        print('\033[32m--- Good!\033[0m')
         score += 1
     else:
-        print('\033[31m' + "--- Wrong!" + '\033[0m')
+        print('\033[31m--- Wrong!\033[0m')
+        print(f"Correct answer: {result}")
+
     return score
 
 def emoticons(percent):
