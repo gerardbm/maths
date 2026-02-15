@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 # --------------------------------------------------
 # Name    : Multiplications game
-# Version : 2.1.1
+# Version : 2.1.2
 # Python  : 3.13.5
 # License : MIT
 # Author  : Gerard Bajona
 # Created : 2019/02/08
-# Changed : 2026/02/15
+# Changed : 2026/02/16
 # URL     : http://github.com/gerardbm/maths
 # --------------------------------------------------
 """Multiplications game for the command line."""
@@ -137,9 +137,9 @@ def colorize(percent):
     """Colorize the result"""
     if percent == 100:
         color = '\033[32m'
-    elif percent >= 50 < 100:
+    elif 50 <= percent < 100:
         color = '\033[36m'
-    elif percent >= 20 < 50:
+    elif 20 <= percent < 50:
         color = '\033[33m'
     else:
         color = '\033[31m'

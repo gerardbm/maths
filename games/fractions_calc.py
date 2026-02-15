@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 # --------------------------------------------------
 # Name    : Calculating fractions game
-# Version : 2.3.1
+# Version : 2.3.2
 # Python  : 3.13.5
 # License : MIT
 # Author  : Gerard Bajona
 # Created : 2023/04/10
-# Changed : 2026/02/15
+# Changed : 2026/02/16
 # URL     : http://github.com/gerardbm/maths
 # --------------------------------------------------
 """Calculating fractions game for the command line."""
@@ -194,9 +194,9 @@ def colorize(percent):
     """Colorize the result"""
     if percent == 100:
         color = '\033[32m'
-    elif percent >= 50 < 100:
+    elif 50 <= percent < 100:
         color = '\033[36m'
-    elif percent >= 20 < 50:
+    elif 20 <= percent < 50:
         color = '\033[33m'
     else:
         color = '\033[31m'
