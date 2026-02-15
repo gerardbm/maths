@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # --------------------------------------------------
 # Name    : Calculating fractions game
-# Version : 2.3.0
+# Version : 2.3.1
 # Python  : 3.13.5
 # License : MIT
 # Author  : Gerard Bajona
