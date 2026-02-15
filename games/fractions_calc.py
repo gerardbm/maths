@@ -221,7 +221,7 @@ def opers_format(opers: list[str]) -> str:
 
 def savetocsv(interval, rounds, level, opers):
     """Save the result in a CSV file"""
-    scores = Path.home() / '.fractions_scores.csv'
+    scores = Path.home() / '.scores_fractions_calc.csv'
     ops_formatted = opers_format(opers)
     now = str(datetime.datetime.now().strftime("%Y/%m/%d %H:%M"))
     lvl = f"{level} digits"
@@ -235,7 +235,7 @@ def savetocsv(interval, rounds, level, opers):
 
 def show_scores():
     """Show saved scores from file."""
-    scores = Path.home() / '.fractions_scores.csv'
+    scores = Path.home() / '.scores_fractions_calc.csv'
     if scores.exists():
         print("\nFractions scores:")
         print("-----------------------")
@@ -253,7 +253,7 @@ def main():
         return
 
     if args.c:
-        scores = Path.home() / '.fractions_scores.csv'
+        scores = Path.home() / '.scores_fractions_calc.csv'
         if scores.exists():
             scores.unlink()
             print("Scores file deleted.")

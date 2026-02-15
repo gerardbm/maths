@@ -147,7 +147,7 @@ def colorize(percent):
 
 def savetocsv(interval, rounds, level):
     """Save the result in a CSV file"""
-    scores = Path.home() / '.multiplications_scores.csv'
+    scores = Path.home() / '.scores_multiplications.csv'
     now = str(datetime.datetime.now().strftime("%Y/%m/%d %H:%M"))
     lvl = f"{level} digits"
     rnd = f"{rounds} rounds"
@@ -159,7 +159,7 @@ def savetocsv(interval, rounds, level):
 
 def show_scores():
     """Show saved scores from file."""
-    scores = Path.home() / '.multiplications_scores.csv'
+    scores = Path.home() / '.scores_multiplications.csv'
     if scores.exists():
         print("\nMultiplications scores:")
         print("-----------------------")
@@ -177,7 +177,7 @@ def main():
         return
 
     if args.c:
-        scores = Path.home() / '.multiplications_scores.csv'
+        scores = Path.home() / '.scores_multiplications.csv'
         if scores.exists():
             scores.unlink()
             print("Scores file deleted.")
