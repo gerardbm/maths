@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # --------------------------------------------------
 # Name    : Fractions game
-# Version : 2.2.0
+# Version : 2.2.1
 # Python  : 3.13.5
 # License : MIT
 # Author  : Gerard Bajona
@@ -104,8 +104,8 @@ def generate_operand(digits):
 def operation(score, count, digits_a, digits_b, opers):
     """Do a question and check the answer."""
     num1 = generate_operand(digits_a)
-    num2 = generate_operand(digits_a)
     den1 = generate_operand(digits_b)
+    num2 = generate_operand(digits_a)
     den2 = generate_operand(digits_b)
 
     frac1 = Fraction(num1, den1)
