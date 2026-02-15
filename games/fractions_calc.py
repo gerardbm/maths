@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # --------------------------------------------------
-# Name    : Fractions game
+# Name    : Fractions calculation game
 # Version : 2.3.0
 # Python  : 3.13.5
 # License : MIT
@@ -10,7 +10,7 @@
 # Changed : 2026/02/15
 # URL     : http://github.com/gerardbm/maths
 # --------------------------------------------------
-"""Fractions game for the command line."""
+"""Fractions calculation game for the command line."""
 
 import argparse
 import random
