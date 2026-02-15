@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # --------------------------------------------------
-# Name    : Fractions calculation game
+# Name    : Calculating fractions game
 # Version : 2.3.0
 # Python  : 3.13.5
 # License : MIT
@@ -10,7 +10,7 @@
 # Changed : 2026/02/15
 # URL     : http://github.com/gerardbm/maths
 # --------------------------------------------------
-"""Fractions calculation game for the command line."""
+"""Calculating fractions game for the command line."""
 
 import argparse
 import random
@@ -182,9 +182,9 @@ def emoticons(percent):
     """Display an emoticon face according to the result."""
     if percent == 100:
         emoticon = ':-)'
-    elif percent >= 50 < 100:
+    elif 50 <= percent < 100:
         emoticon = ':-|'
-    elif percent >= 20 < 50:
+    elif 20 <= percent < 50:
         emoticon = ':-('
     else:
         emoticon = ':_('
