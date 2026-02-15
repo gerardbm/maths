@@ -7,7 +7,7 @@
 # License : MIT
 # Author  : Gerard Bajona
 # Created : 2023/04/10
-# Changed : 2026/02/07
+# Changed : 2026/02/15
 # URL     : http://github.com/gerardbm/maths
 # --------------------------------------------------
 """Fractions game for the command line."""
