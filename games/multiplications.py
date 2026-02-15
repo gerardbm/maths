@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 # --------------------------------------------------
 # Name    : Multiplications game
-# Version : 2.1.0
+# Version : 2.1.1
 # Python  : 3.13.5
 # License : MIT
 # Author  : Gerard Bajona
 # Created : 2019/02/08
-# Changed : 2025/06/08
+# Changed : 2026/02/15
 # URL     : http://github.com/gerardbm/maths
 # --------------------------------------------------
 """Multiplications game for the command line."""
@@ -125,9 +125,9 @@ def emoticons(percent):
     """Display an emoticon face according to the result."""
     if percent == 100:
         emoticon = ':-)'
-    elif percent >= 50 < 100:
+    elif 50 <= percent < 100:
         emoticon = ':-|'
-    elif percent >= 20 < 50:
+    elif 20 <= percent < 50:
         emoticon = ':-('
     else:
         emoticon = ':_('
