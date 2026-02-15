@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # --------------------------------------------------
 # Name    : Fractions game
-# Version : 2.2.1
+# Version : 2.3.0
 # Python  : 3.13.5
 # License : MIT
 # Author  : Gerard Bajona
@@ -83,7 +83,7 @@ def letsplay(digits_a, digits_b, opers, rounds, save):
     interval = end-start
 
     if rights == rounds and save:
-        savetocsv(interval, rounds, f"{digits_a}×{digits_b}")
+        savetocsv(interval, rounds, f"{digits_a}/{digits_b}", opers)
 
     print()
     print(color + '>', str(percent) + "%", emoticon + clean)
@@ -202,15 +202,34 @@ def colorize(percent):
         color = '\033[31m'
     return color
 
-def savetocsv(interval, rounds, level):
+def opers_format(opers: list[str]) -> str:
+    """Format operators for display / CSV:
+       - Substitute * → ×, / → ÷
+       - Remove duplicates and sort in canonical order"""
+    canonical_order = ['+', '-', '×', '÷']
+    mapping = {'*': '×', '/': '÷'}
+    formatted = []
+    for op in opers:
+        formatted.append(mapping.get(op, op))
+
+    unique_sorted = []
+    for op in canonical_order:
+        if op in formatted:
+            unique_sorted.append(op)
+
+    return ''.join(unique_sorted)
+
+def savetocsv(interval, rounds, level, opers):
     """Save the result in a CSV file"""
     scores = Path.home() / '.fractions_scores.csv'
+    ops_formatted = opers_format(opers)
     now = str(datetime.datetime.now().strftime("%Y/%m/%d %H:%M"))
     lvl = f"{level} digits"
+    ops = f"{ops_formatted} mode"
     rnd = f"{rounds} rounds"
     sec = f"{round(interval, 2):.2f} sec"
     rpq = f"{round(interval/rounds, 2):.2f} sec/round"
-    reg = f"{now}, {lvl}, {rnd}, {sec}, {rpq}\n"
+    reg = f"{now}, {lvl}, {ops}, {rnd}, {sec}, {rpq}\n"
     with open(scores, 'a+', encoding='utf8') as file_handle:
         file_handle.write(reg)
 
