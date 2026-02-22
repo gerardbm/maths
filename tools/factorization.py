@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # --------------------------------------------------
 # Name    : Factorization in prime factors
-# Version : 2.0.0
+# Version : 2.0.1
 # Python  : 3.13.5
 # License : MIT
 # Author  : Gerard Bajona
@@ -17,10 +17,10 @@ import argparse
 def parse_arguments():
     """Parse command-line arguments."""
     parser = argparse.ArgumentParser(
-            description="Factorization tool for the command line.")
+        description="Factorization tool for the command line.")
     parser.add_argument('number',
-            type=int,
-            help="Integer value to factorize in prime factors")
+        type=int,
+        help="Integer value to factorize in prime factors")
     args = parser.parse_args()
     if args.number < 2:
         parser.error("The number must be an integer greater than 1.")
