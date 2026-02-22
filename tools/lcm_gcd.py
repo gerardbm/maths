@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # --------------------------------------------------
 # Name    : LCM & GCD
-# Version : 2.0.0
+# Version : 2.1.0
 # Python  : 3.13.5
 # License : MIT
 # Author  : Gerard Bajona
@@ -12,8 +12,9 @@
 # --------------------------------------------------
 """LCM & GCD calculator"""
 
-from numpy import lcm,gcd
 import argparse
+from math import gcd
+from functools import reduce
 
 def parse_arguments():
     """Parse command-line arguments."""
@@ -32,18 +33,19 @@ def parse_arguments():
         parser.error("Provide at least two integers.")
     return values
 
+def lcm(a, b):
+    """LCM of two integers."""
+    return abs(a * b) // gcd(a, b)
+
 def get_lcm_gcd(values):
     """LCM & GCD"""
-    if len(values) > 2:
-        result_lcm = lcm.reduce([*values])
-        result_gcd = gcd.reduce([*values])
-    else:
-        result_lcm = lcm(*values)
-        result_gcd = gcd(*values)
+    result_gcd = reduce(gcd, values)
+    result_lcm = reduce(lcm, values)
+    values_fmt = str(values).strip('[,]')
 
     print()
-    print("> LCM =", result_lcm)
-    print("> GCD =", result_gcd)
+    print(f"> LCM({values_fmt}) =", result_lcm)
+    print(f"> GCD({values_fmt}) =", result_gcd)
 
 def main():
     """Main program."""
