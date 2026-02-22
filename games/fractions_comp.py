@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # --------------------------------------------------
 # Name    : Comparing fractions game
-# Version : 1.0.0
+# Version : 1.0.1
 # Python  : 3.13.5
 # License : MIT
 # Author  : Gerard Bajona
@@ -21,31 +21,31 @@ from pathlib import Path
 def parse_arguments():
     """Parse command-line arguments."""
     parser = argparse.ArgumentParser(
-            description="Fractions game for the command line.")
+        description="Fractions game for the command line.")
     parser.add_argument('-a',
-            type=positive_digit,
-            default=1,
-            metavar='Int',
-            help="Digits for the numerator (1 ≤ A ≤ 4; default = 1)")
+        type=positive_digit,
+        default=1,
+        metavar='Int',
+        help="Digits for the numerator (1 ≤ A ≤ 4; default = 1)")
     parser.add_argument('-b',
-            type=positive_digit,
-            default=1,
-            metavar='Int',
-            help="Digits for the denominator (1 ≤ B ≤ 4; default = 1)")
+        type=positive_digit,
+        default=1,
+        metavar='Int',
+        help="Digits for the denominator (1 ≤ B ≤ 4; default = 1)")
     parser.add_argument('-r',
-            type=int,
-            default=10,
-            metavar='Int',
-            help="Number of rounds to play (default = 10)")
+        type=int,
+        default=10,
+        metavar='Int',
+        help="Number of rounds to play (default = 10)")
     parser.add_argument('-s',
-            action='store_true',
-            help="Save the scores if all answers are correct")
+        action='store_true',
+        help="Save the scores if all answers are correct")
     parser.add_argument('-l',
-            action='store_true',
-            help="Show a list with the previous scores and exit")
+        action='store_true',
+        help="Show a list with the previous scores and exit")
     parser.add_argument('-c',
-            action='store_true',
-            help="Clear the previous saved scores and exit")
+        action='store_true',
+        help="Clear the previous saved scores and exit")
     return parser.parse_args()
 
 def positive_digit(digit):
